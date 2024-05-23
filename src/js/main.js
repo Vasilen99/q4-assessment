@@ -1,34 +1,36 @@
-var reportsWidget = {
+document.addEventListener("DOMContentLoaded", function () {
+  var reportsWidget = {
     options: {
-        containerSelector: '.reports',
-        template: (
-            '{{#.}}' +
-            '<article class="reports_item">' +
-            '<a href="{{cover}}" target="_blank">' +
-            '<img class="reports_cover" src="{{cover}}" alt="{{title}} Cover" title="{{title}} Cover"/>' 
-            '</a>' +
-            '<footer class="reports_docs">' +
-            '{{#documents}}' +
-            '<h3 class="reports_title">' +
-            '<a href="{{url}}" target="_blank" title="{{title}}">{{title}} <span>({{file_size}} {{file_type}})</span></a>' +
-            '</h3>' +
-            '{{/documents}}' +
-            '</footer>' +
-            '</article>' +
-            '{{/.}}'
-        )
+      containerSelector: ".reports",
+      template:
+        "{{#.}}" +
+        '<article class="reports_item">' +
+        '<a href="{{cover}}" target="_blank">' +
+        '<img class="reports_cover" src="{{cover}}" alt="{{title}} Cover" title="{{title}} Cover"/>' +
+        "</a>" +
+        '<footer class="reports_docs">' +
+        "{{#documents}}" +
+        '<h3 class="reports_title">' +
+        '<a href="{{url}}" target="_blank" title="{{title}}">{{title}} <span>({{file_size}} {{file_type}})</span></a>' +
+        "</h3>" +
+        "{{/documents}}" +
+        "</footer>" +
+        "</article>" +
+        "{{/.}}",
     },
 
     init: function () {
-        this.renderReports(reportData || []);
+      this.renderReports(reportData || []);
     },
 
     renderReports: function (reports) {
-        var inst = this,
-            options = inst.options;
+      var inst = this,
+        options = inst.options;
 
-        $(options.containerSelector).html(Mustache.render(options.template, reports));
-    }
-};
+      document.querySelector(options.containerSelector).innerHTML =
+        Mustache.render(options.template, reports);
+    },
+  };
 
-reportsWidget.init();
+  reportsWidget.init();
+});
