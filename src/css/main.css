@@ -59,3 +59,24 @@
 }
 
 /* Begin styling the report items here! */ 
+
+.reports {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+
+@media (max-width: 768px) {
+  .reports {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .reports {
+      grid-template-columns: 1fr;
+      gap: 16px;
+  }
+}
